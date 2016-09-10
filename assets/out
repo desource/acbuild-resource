@@ -15,12 +15,20 @@ payload=$(mktemp /tmp/resource-in.XXXXXX)
 
 cat > $payload <&0
 
+upload() {}
+
+if [ -x /opt/resource/override.sh ]; then
+    source /opt/resource/override.sh    
+fi
+
 build=$(jq -r '.params.build // ""' < $payload)
 
 cd ${destination}
 
 echo "eval ${build}"
 eval ${build}
+
+upload $destination $payload
 
 jq -n '{
   version: {
