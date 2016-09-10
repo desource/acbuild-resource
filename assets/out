@@ -17,9 +17,9 @@ cat > $payload <&0
 
 echo "build acbuild ...."
 
-jq -n "{
+jq -n '{
   version: {
-    ref: none
+    ref: "none"
   }
-}" >&3
+}' >&3
 

@@ -10,9 +10,9 @@ cat > $payload <&0
 
 echo "Nothing todo here"
 
-jq -n "{
+jq -n '{
   version: {
-    ref: none
+    ref: "none"
   }
-}" >&3
+}' >&3
 

@@ -15,9 +15,9 @@ payload=$(mktemp /tmp/resource-in.XXXXXX)
 
 cat > $payload <&0
 
-jq -n "{
+jq -n '{
   version: {
-    ref: none
+    ref: "none"
   }
-}" >&3
+}' >&3
 
