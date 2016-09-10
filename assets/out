@@ -15,7 +15,9 @@ payload=$(mktemp /tmp/resource-in.XXXXXX)
 
 cat > $payload <&0
 
-upload() {}
+upload() {
+    :
+}
 
 if [ -x /opt/resource/override.sh ]; then
     source /opt/resource/override.sh    
