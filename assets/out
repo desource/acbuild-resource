@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-exec 3>&1 # make stdout available as fd 3 for the result
-exec 1>&2 # redirect all output to stderr for logging
+exec 3>&1
+exec 1>&2
 
 destination=$1
 
@@ -15,7 +15,12 @@ payload=$(mktemp /tmp/resource-in.XXXXXX)
 
 cat > $payload <&0
 
-echo "build acbuild ...."
+build=$(jq -r '.params.build // ""' < $payload)
+
+cd ${destination}
+
+echo "eval ${build}"
+eval ${build}
 
 jq -n '{
   version: {
