@@ -4,7 +4,6 @@ RUN \
   dnf update -y && \
   dnf install -y \
       tar \
-      gpg \
       jq && \
   dnf clean all
 
