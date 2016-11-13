@@ -15,7 +15,8 @@ RUN \
   echo "$ACBUILD_SHA256  acbuild-v${ACBUILD_VERSION}.tar.gz" | sha256sum -c && \
   mkdir -p /opt/bin && \
   tar -C /opt/bin --strip-components 1 -xf acbuild-v${ACBUILD_VERSION}.tar.gz && \
-  rm -rf /acbuild-v${ACBUILD_VERSION}.tar.gz
+  rm -rf /acbuild-v${ACBUILD_VERSION}.tar.gz && \
+  ln -s /usr/bin/gpg2 /usr/bin/gpg
 
 ENV PATH=/opt/bin:${PATH}
 
